@@ -1,4 +1,5 @@
 import 'package:bookly/core/utlis/assets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 class SplashViewBody extends StatelessWidget {
@@ -11,6 +12,14 @@ class SplashViewBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Image.asset(AssetsData.logo),
+        const SizedBox(
+          height: 18,
+        ),
+        Text(
+          'Read Free Books',
+          textAlign: TextAlign.center,
+          style: GoogleFonts.lobster(fontSize: 22),
+        ),
       ],
     );
   }
