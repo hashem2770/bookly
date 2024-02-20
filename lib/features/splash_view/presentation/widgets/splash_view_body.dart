@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bookly/core/utlis/assets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'fading_text.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -15,11 +14,19 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   bool _welcomeText = false;
 
   Future<void> changeWelcomeText() async {
-    await Future.delayed(const Duration(seconds: 4));
-    _welcomeText = true;
-    setState(() {});
-    await Future.delayed(const Duration(seconds: 2));
-    navigateToHome();
+    await Future.delayed(
+      const Duration(seconds: 4),
+      () {
+        setState(() {
+          _welcomeText = true;
+        });
+      },
+    );
+
+    await Future.delayed(
+      const Duration(seconds: 2),
+      () => navigateToHome(),
+    );
   }
 
   navigateToHome() {
