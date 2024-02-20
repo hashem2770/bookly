@@ -1,7 +1,7 @@
-import 'package:bookly/features/home_view/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:bookly/core/utlis/assets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'fading_text.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -15,21 +15,16 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   bool _welcomeText = false;
 
   Future<void> changeWelcomeText() async {
+    await Future.delayed(const Duration(seconds: 4));
+    _welcomeText = true;
+    setState(() {});
     await Future.delayed(const Duration(seconds: 2));
-
-    setState(() {
-      _welcomeText = true;
-    });
-
-    navGo();
-
-
+    navigateToHome();
   }
 
-navGo(){
-  GoRouter.of(context).pushReplacementNamed('home_screen');
-}
-
+  navigateToHome() {
+    GoRouter.of(context).pushReplacementNamed('home_screen');
+  }
 
   @override
   void initState() {
@@ -48,13 +43,11 @@ navGo(){
           height: 18,
         ),
         FadingText(
-          welcomeText: _welcomeText,
-          firstText: 'Read Free Book',
+          firstText: 'Read Free Books',
           secondText: 'Now..',
+          condition: _welcomeText,
         ),
       ],
     );
   }
 }
-
-
