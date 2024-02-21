@@ -1,3 +1,4 @@
+import 'package:bookly/features/home_view/presentation/view/book_details_view.dart';
 import 'package:bookly/features/home_view/presentation/view/home_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,6 +19,13 @@ final booklyRouter = GoRouter(
       name: 'home_screen',
       builder: (context, state) {
         return const HomeView();
+      },
+    ),
+    GoRoute(
+      path: '/details_view',
+      name: 'details_screen',
+      builder: (context, state) {
+        return const BookDetailsView();
       },
     ),
   ],
