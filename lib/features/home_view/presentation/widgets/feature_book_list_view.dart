@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'custom_list_view_item.dart';
+import 'custom_book_item.dart';
 
 class FeatureBooksListView extends StatelessWidget {
   const FeatureBooksListView({super.key});
@@ -11,7 +11,7 @@ class FeatureBooksListView extends StatelessWidget {
       height: 250,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => const FeatureListViewItem(),
+        itemBuilder: (context, index) => const CustomBookImage(),
         separatorBuilder: (context, index) => const SizedBox(width: 12),
         itemCount: 5,
       ),
