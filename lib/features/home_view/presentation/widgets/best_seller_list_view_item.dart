@@ -55,7 +55,7 @@ class BestSellerListViewItem extends StatelessWidget {
                         '\$19.00',
                         style: Styles.textStyle14.copyWith(fontWeight: FontWeight.bold),
                       ),
-                      const BookRating(),
+                      const BookRating(mainAxisAlignment: MainAxisAlignment.spaceEvenly),
                     ],
                   )
                 ],

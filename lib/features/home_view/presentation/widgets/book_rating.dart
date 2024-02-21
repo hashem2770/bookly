@@ -4,17 +4,17 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/utlis/styles.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key, this.spaceEvenly=true});
-  final bool spaceEvenly;
+  const BookRating({super.key,this.mainAxisAlignment=MainAxisAlignment.start});
+  final MainAxisAlignment mainAxisAlignment;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.baseline,
       textBaseline: TextBaseline.alphabetic,
-      mainAxisAlignment:spaceEvenly? MainAxisAlignment.spaceEvenly:MainAxisAlignment.center,
+      mainAxisAlignment:mainAxisAlignment,
       children: [
-        const Icon(FontAwesomeIcons.faceGrinStars,color: Colors.amber,),
+        const Icon(FontAwesomeIcons.faceGrinStars,color: Colors.amber,size: 20),
         const SizedBox(width: 8,),
         const Text('4.8',style: Styles.textStyle16,),
         const SizedBox(width: 8,),
