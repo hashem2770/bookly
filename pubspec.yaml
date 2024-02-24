@@ -44,6 +44,7 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   equatable: any
   dartz: any
+  dio: any
 
 dev_dependencies:
   flutter_test:
