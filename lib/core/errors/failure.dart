@@ -5,6 +5,7 @@ abstract class Failure {
 
   Failure(this.errMessage);
 }
+// other classes that I can implement in more apps => AuthFailure - DatabaseFailure - ValidationFailure
 
 class ServerFailure extends Failure {
   ServerFailure(super.errMessage);
