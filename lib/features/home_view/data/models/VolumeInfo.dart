@@ -20,6 +20,9 @@ import 'ImageLinks.dart';
 
 class VolumeInfo {
   VolumeInfo({
+    this.ratingCount,
+    this.averageRating,
+    this.authors,
       this.title, 
       this.publishedDate, 
       this.description, 
@@ -37,6 +40,9 @@ class VolumeInfo {
       this.canonicalVolumeLink,});
 
   VolumeInfo.fromJson(dynamic json) {
+    ratingCount=json['ratingsCount'];
+    averageRating=json['averageRating'];
+    authors=json['authors'];
     title = json['title'];
     publishedDate = json['publishedDate'];
     description = json['description'];
@@ -68,6 +74,9 @@ class VolumeInfo {
   String? previewLink;
   String? infoLink;
   String? canonicalVolumeLink;
+  num? averageRating;
+  num? ratingCount;
+  List<dynamic>? authors;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

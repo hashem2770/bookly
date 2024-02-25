@@ -1,3 +1,4 @@
+import 'package:bookly/features/home_view/data/models/BookModel.dart';
 import 'package:bookly/features/home_view/presentation/view/book_details_view.dart';
 import 'package:bookly/features/home_view/presentation/view/home_view.dart';
 import 'package:go_router/go_router.dart';
@@ -25,7 +26,8 @@ final booklyRouter = GoRouter(
       path: '/details_view',
       name: 'details_screen',
       builder: (context, state) {
-        return const BookDetailsView();
+        BookModel book = state.extra as BookModel; // 👈 casting is important
+        return  BookDetailsView(book: book,);
       },
     ),
   ],
