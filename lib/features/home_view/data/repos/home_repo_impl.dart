@@ -19,7 +19,7 @@ class HomeRepoImpl extends HomeRepo {
 
       List<BookModel> newestBooks = [];
       for (final book in result['items']) {
-        newestBooks.add(book);
+        newestBooks.add(BookModel.fromJson(book));
       }
       return right(newestBooks);
     } catch (e) {
@@ -39,7 +39,7 @@ class HomeRepoImpl extends HomeRepo {
 
       List<BookModel> relevanceBooks = [];
       for (final book in result['items']) {
-        relevanceBooks.add(book);
+        relevanceBooks.add(BookModel.fromJson(book));
       }
       return right(relevanceBooks);
     } catch (e) {

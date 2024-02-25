@@ -1,4 +1,8 @@
+import 'package:bookly/core/widgets/custom_error.dart';
+import 'package:bookly/core/widgets/custom_loading-indicator.dart';
+import 'package:bookly/features/home_view/presentation/manager/feature_books_cubit/feature_books_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'custom_book_item.dart';
 
@@ -7,14 +11,24 @@ class FeatureBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 250,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => const CustomBookImage(),
-        separatorBuilder: (context, index) => const SizedBox(width: 12),
-        itemCount: 5,
-      ),
+    return BlocBuilder<FeatureBooksCubit, FeatureBooksState>(
+      builder: (context, state) {
+         if (state is FeatureBooksSuccess) {
+          return SizedBox(
+            height: 250,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => const CustomBookImage(),
+              separatorBuilder: (context, index) => const SizedBox(width: 12),
+              itemCount: 5,
+            ),
+          );
+        } else if (state is FeatureBooksFailure) {
+          return CustomError(state.errMessage);
+        } else {
+          return const CustomLoadingIndicator();
+        }
+      },
     );
   }
 }
