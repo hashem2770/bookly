@@ -4,7 +4,7 @@ import 'package:bookly/features/home_view/presentation/manager/newest_books_cubi
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'best_seller_list_view_item.dart';
+import 'newest_list_view_item.dart';
 
 class NewestBooksListView extends StatelessWidget {
   const NewestBooksListView({super.key});
@@ -18,13 +18,13 @@ class NewestBooksListView extends StatelessWidget {
           child: ListView.separated(
             physics: const NeverScrollableScrollPhysics(),
             scrollDirection: Axis.vertical,
-            itemBuilder: (context, index) => BestSellerListViewItem(
+            itemBuilder: (context, index) => NewestListViewItem(
               book: state.newBooks[index],
             ),
             separatorBuilder: (context, index) => const SizedBox(
               height: 8,
             ),
-            itemCount: 7,
+            itemCount: state.newBooks.length,
           ),
         );
       }else if(state is NewestBooksFailure){

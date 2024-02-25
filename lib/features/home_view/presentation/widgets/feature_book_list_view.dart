@@ -21,14 +21,15 @@ class FeatureBooksListView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  GoRouter.of(context).pushNamed('details_screen',extra: state.books[index]);
+                  GoRouter.of(context)
+                      .pushNamed('details_screen', extra: state.books[index]);
                 },
                 child: CustomBookImage(
                     bookImage:
                         state.books[index].volumeInfo!.imageLinks!.thumbnail!),
               ),
               separatorBuilder: (context, index) => const SizedBox(width: 12),
-              itemCount: 5,
+              itemCount: state.books.length,
             ),
           );
         } else if (state is FeatureBooksFailure) {

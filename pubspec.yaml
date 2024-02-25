@@ -41,11 +41,18 @@ dependencies:
   google_fonts: ^6.1.0
   #for state management
   flutter_bloc: ^8.1.4
+  # for icons and fonts
   font_awesome_flutter: ^10.7.0
+  # help with bloc to boost performance
   equatable: any
+  # for error handling
   dartz: any
+  # for fetching api service
   dio: any
+  # service locator
   get_it: ^7.6.7
+  # caching images
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:

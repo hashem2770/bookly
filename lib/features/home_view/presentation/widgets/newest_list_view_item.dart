@@ -1,13 +1,13 @@
+import 'package:bookly/core/widgets/custom_loading-indicator.dart';
 import 'package:bookly/features/home_view/data/models/BookModel.dart';
 import 'package:bookly/features/home_view/presentation/widgets/book_rating.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../../core/utlis/assets.dart';
 import '../../../../core/utlis/styles.dart';
 
-class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key, required this.book});
+class NewestListViewItem extends StatelessWidget {
+  const NewestListViewItem({super.key, required this.book});
 
   final BookModel book;
 
@@ -15,25 +15,25 @@ class BestSellerListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        GoRouter.of(context).pushNamed(
-          'details_screen',
-          extra: book
-        );
+        GoRouter.of(context).pushNamed('details_screen', extra: book);
       },
       child: SizedBox(
         height: 120,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 2 / 3,
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            book.volumeInfo!.imageLinks!.thumbnail!),
-                        fit: BoxFit.cover)),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: AspectRatio(
+                aspectRatio: 2 / 3,
+                child: CachedNetworkImage(
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => const CustomLoadingIndicator(),
+                  imageUrl: book.volumeInfo!.imageLinks!.thumbnail!,
+                  errorWidget: (context, url, error) => const Icon(
+                    Icons.error,
+                    color: Colors.amber,
+                  ),
+                ),
               ),
             ),
             const SizedBox(width: 22),
@@ -64,10 +64,11 @@ class BestSellerListViewItem extends StatelessWidget {
                         style: Styles.textStyle14
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
-                       BookRating(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          ratingCount: book.volumeInfo?.ratingCount??0,
-                          rating: book.volumeInfo?.averageRating??0,),
+                      BookRating(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        ratingCount: book.volumeInfo?.ratingCount ?? 0,
+                        rating: book.volumeInfo?.averageRating ?? 0,
+                      ),
                     ],
                   )
                 ],
