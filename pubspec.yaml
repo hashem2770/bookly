@@ -53,6 +53,8 @@ dependencies:
   get_it: ^7.6.7
   # caching images
   cached_network_image: ^3.3.1
+  # for launching a URL. Supports web, phone, SMS, and email schemes.
+  url_launcher: 6.1.0
 
 dev_dependencies:
   flutter_test:

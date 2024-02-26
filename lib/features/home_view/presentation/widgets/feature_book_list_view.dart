@@ -21,8 +21,10 @@ class FeatureBooksListView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  GoRouter.of(context)
-                      .pushNamed('details_screen', extra: state.books[index]);
+                  GoRouter.of(context).pushNamed(
+                    'details_screen',
+                    extra: state.books[index],
+                  );
                 },
                 child: CustomBookImage(
                     bookImage:

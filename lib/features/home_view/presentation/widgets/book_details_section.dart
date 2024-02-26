@@ -42,7 +42,7 @@ class BookDetailsSection extends StatelessWidget {
             rating: bookModel.volumeInfo?.averageRating?.round() ?? 0,
             ratingCount: bookModel.volumeInfo?.ratingCount?.round() ?? 0),
         const SizedBox(height: 22),
-        const BooksAction(),
+         BooksAction(bookPreviewUrl: bookModel.volumeInfo!.previewLink!),
       ],
     );
   }
