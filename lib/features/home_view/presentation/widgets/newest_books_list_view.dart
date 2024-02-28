@@ -11,27 +11,25 @@ class NewestBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewestBooksCubit,NewestBooksState>(builder:(context, state) {
-      if(state is NewestBooksSuccess){
-         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: ListView.separated(
-            physics: const NeverScrollableScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            itemBuilder: (context, index) => NewestListViewItem(
-              book: state.newBooks[index],
+    return BlocBuilder<NewestBooksCubit, NewestBooksState>(
+      builder: (context, state) {
+        if (state is NewestBooksSuccess) {
+          return SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: state.newBooks.length,
+              (context, index) {
+                return NewestListViewItem(
+                  book: state.newBooks[index],
+                );
+              },
             ),
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 8,
-            ),
-            itemCount: state.newBooks.length,
-          ),
-        );
-      }else if(state is NewestBooksFailure){
-        return CustomError(state.errMessage);
-      }else{
-        return const CustomLoadingIndicator();
-      }
-    }, );
+          );
+        } else if (state is NewestBooksFailure) {
+          return SliverToBoxAdapter(child: CustomError(state.errMessage));
+        } else {
+          return const SliverToBoxAdapter(child:  CustomLoadingIndicator());
+        }
+      },
+    );
   }
 }

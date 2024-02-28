@@ -17,7 +17,8 @@ class NewestListViewItem extends StatelessWidget {
       onTap: () {
         GoRouter.of(context).pushNamed('details_screen', extra: book);
       },
-      child: SizedBox(
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 8),
         height: 120,
         child: Row(
           children: [
