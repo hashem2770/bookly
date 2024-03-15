@@ -4,9 +4,6 @@ A new Flutter project with bloc arch
 It fetch a free books from Google free Api and display them
 you can download them as PDF for free
 
-![main_screen.png](..%2F..%2FDesktop%2Fmain_screen.png)
-![onboarding.png](..%2F..%2FDesktop%2Fonboarding.png)
-![details_screen.png](..%2F..%2FDesktop%2Fdetails_screen.png)
 
 ## Features
 - Fetching books from Google free Api
